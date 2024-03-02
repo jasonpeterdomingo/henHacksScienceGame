@@ -55,8 +55,13 @@ def main():
             keys = pygame.key.get_pressed()
             if keys[pygame.K_a]:
                 player_position.x -= player_speed
+                if player_position.x < player_radius:
+                    player_position.x = player_radius
             if keys[pygame.K_d]:
                 player_position.x += player_speed
+                if player_position.x > SCREEN_WIDTH - player_radius:
+                    player_position.x = SCREEN_WIDTH - player_radius
+
 
             # Update the interactive object's position
             object_rect.y = player_position.y - player_radius
