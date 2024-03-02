@@ -7,27 +7,13 @@ def main():
     clock = pygame.time.Clock() 
     running = True
     dt = 0
-    
-    # Home Screen
-    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-    pygame.display.set_caption("Main Menu")
-    
-    def draw_text(text, font, text_coL, x, y):
-      img = font.render(text, True, text_col)
-      screen.blit(img, (x, y))
-      # Player starting values
-      player_speed = 5
-      player_position = pygame.Vector2(screen.get_width() / 2, screen.get_height() / 1.2)
+
+    # Player starting values
+    player_speed = 5
+    player_position = pygame.Vector2(screen.get_width() / 2, screen.get_height() / 1.2)
 
     
     while running:
-      screen.fill((52, 78, 91))
-      
-      for event in pygame.event.get():
-          if event.type == pygame.QUIT:
-              run == False
-      pygame.display.update()
-      
         # pygame.QUIT closes windows when X is clicked
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
