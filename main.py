@@ -47,6 +47,7 @@ def main():
             # Limit frame time to 60 fps
             dt = clock.tick(60) / 1000
 
+
     # Quits game
     pygame.quit()
 
