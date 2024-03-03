@@ -83,7 +83,7 @@ def main():
 
             # Check for collision with object
             if enemy_object.colliderect(
-                    pygame.Rect(player.position[0], player.position[1], character_rect.width, character_rect.height)):
+                pygame.Rect(player.position[0], player.position[1], character_rect.width, character_rect.height)):
                 battle_screen_displayed = True
                 draw_battle_screen(screen, player, enemy)
 
@@ -137,6 +137,30 @@ def draw_battle_screen(screen, player: Player, enemy: Enemy):
     text = font.render("Battle Screen", True, (255, 255, 255))
     text_rect = text.get_rect(center=(screen.get_width() / 2, screen.get_height() / 2))
     screen.blit(text, text_rect)
+    font2 = pygame.font.Font(None, 30)
+    pygame.draw.rect(screen, (255, 255, 255), (screen.get_width() / 13.25, screen.get_height() / 1.3, 450, 100), 2)
+    pygame.draw.rect(screen, (255, 255, 255), (screen.get_width() / 1.68, screen.get_height() / 1.365, 180, 60), 2)
+    pygame.draw.rect(screen, (255, 255, 255), (screen.get_width() / 1.68, screen.get_height() / 1.15, 180, 60), 2)
+    pygame.draw.rect(screen, (255, 255, 255), (screen.get_width() / 1.252, screen.get_height() / 1.365, 180, 60), 2)
+    pygame.draw.rect(screen, (255, 255, 255), (screen.get_width() / 1.252, screen.get_height() / 1.15, 180, 60), 2)
+    text2_1 = font2.render("Question: The cell's genetic material is", True, (255, 255, 255))
+    text2_2 = font2.render("stored in structures called what?", True, (255, 255, 255))
+    text2_3 = font2.render("a) Cytoplasms", True, (255, 255, 255))
+    text2_4 = font2.render("b) Nuclear Pores", True, (255, 255, 255))
+    text2_5 = font2.render("c) mRNA", True, (255, 255, 255))
+    text2_6 = font2.render("d) Chromosomes", True, (255, 255, 255))
+    text2_1_rect = text2_1.get_rect(center=(screen.get_width() / 4, screen.get_height() / 1.225))
+    text2_2_rect = text2_2.get_rect(center=(screen.get_width() / 4, screen.get_height() / 1.175))
+    text2_3_rect = text2_3.get_rect(center=(screen.get_width() / 1.5, screen.get_height() / 1.3))
+    text2_4_rect = text2_4.get_rect(center=(screen.get_width() / 1.15, screen.get_height() / 1.3))
+    text2_5_rect = text2_5.get_rect(center=(screen.get_width() / 1.554, screen.get_height() / 1.1))
+    text2_6_rect = text2_6.get_rect(center=(screen.get_width() / 1.15, screen.get_height() / 1.1))
+    screen.blit(text2_1, text2_1_rect)
+    screen.blit(text2_2, text2_2_rect)
+    screen.blit(text2_3, text2_3_rect)
+    screen.blit(text2_4, text2_4_rect)
+    screen.blit(text2_5, text2_5_rect)
+    screen.blit(text2_6, text2_6_rect)
 
     # Health
     draw_player_hearts(screen, player.health)
