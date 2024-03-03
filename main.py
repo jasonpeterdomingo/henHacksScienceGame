@@ -12,7 +12,7 @@ def main():
     dt = 0
 
     # Load the background image
-    background_image = pygame.image.load("testing_bg.png")
+    background_image = pygame.image.load("Images/testing_bg.png")
     background_rect = background_image.get_rect()
 
     # Player starting values
@@ -20,11 +20,11 @@ def main():
     player_position = [SCREEN_WIDTH / 2.5, SCREEN_HEIGHT / 1.6]
 
     # Load the character image
-    character_image = pygame.image.load("test_player.png")
+    character_image = pygame.image.load("Images/test_player.png")
     character_rect = character_image.get_rect()
 
     # Load the object image
-    object_image = pygame.image.load("nucleus.png")
+    object_image = pygame.image.load("Images/nucleus.png")
     enemy_object = object_image.get_rect()
     enemy_object.x = 40
     enemy_object.y = player_position[1]
