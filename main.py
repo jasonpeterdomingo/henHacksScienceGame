@@ -23,6 +23,7 @@ def main():
             
     # Player initialization
     player = Player([SCREEN_WIDTH / 2.5, SCREEN_HEIGHT / 1.6])
+    player_health = 3
 
     # Load the character image
     character_image = pygame.image.load("Images/test_player.png")
@@ -33,6 +34,8 @@ def main():
     enemy_object = object_image.get_rect()
     enemy_object.x = 40
     enemy_object.y = player.position[1]
+
+    enemy_health = 3
 
     # Display Start Screen
     draw_start_screen(screen)
@@ -80,7 +83,7 @@ def main():
             if enemy_object.colliderect(
                     pygame.Rect(player.position[0], player.position[1], character_rect.width, character_rect.height)):
                 battle_screen_displayed = True
-                draw_battle_screen(screen)
+                draw_battle_screen(screen, player_health, enemy_health)
 
             # Update the display
             pygame.display.update()
@@ -92,10 +95,10 @@ def main():
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
-                elif event.type == pygame.MOUSEBUTTONDOWN:
+                if event.type == pygame.MOUSEBUTTONDOWN:
                     battle_screen_displayed = False
 
-            draw_battle_screen(screen)
+            draw_battle_screen(screen, player_health, enemy_health)
             pygame.display.update()
 
     # Quits game
@@ -124,7 +127,7 @@ def draw_start_screen(screen):
     pygame.display.flip()
 
 
-def draw_battle_screen(screen):
+def draw_battle_screen(screen, player_health, enemy_health):
     screen.fill((0, 0, 0))  # Black background
 
     # Draw the battle scene elements
@@ -134,8 +137,24 @@ def draw_battle_screen(screen):
     screen.blit(text, text_rect)
 
     # You can add additional elements here, such as UI components, health bars, etc.
+    draw_player_hearts(screen, player_health)
+    draw_enemy_hearts(screen, enemy_health)
 
     pygame.display.flip()
+
+
+def draw_player_hearts(screen, health):
+    player_heart_position = 10
+    for i in range(health):
+        pygame.draw.rect(screen, (255, 0, 0), (player_heart_position, 10, 50, 50), 2)
+        player_heart_position += 60
+
+
+def draw_enemy_hearts(screen, health):
+    enemy_heart_position = screen.get_width() - 180
+    for i in range(health):
+        pygame.draw.rect(screen, (255, 0, 0), (enemy_heart_position, 10, 50, 50), 2)
+        enemy_heart_position += 60
 
 
 if __name__ == '__main__':
