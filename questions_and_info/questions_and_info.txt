@@ -1,14 +1,16 @@
 Nucleus Info: 
-Stores the genetic material (DNA) of the cell into structures called chromosomes
-The nuclear envelope separates the nucleus from the cytoplasm and regulates the movement of molecules in and out of the nucleus
-Inside the nucleus, DNA is transcribed into a primary transcript
-Primary transcript undergoes RNA processing (converts the primary transcript into mRNA)
-The mRNA then exits the nucleus via the nuclear pores, ready for translation (protein synthesis)
+The nucleus stores the genetic material (DNA) of the cell into structures called chromosomes. 
+The nuclear envelope separates the nucleus from the cytoplasm and regulates the movement of molecules in and out of the nucleus. 
+Inside the nucleus, DNA is transcribed into a primary transcript. 
+Primary transcript undergoes RNA processing (converts the primary transcript into mRNA). 
+The mRNA then exits the nucleus via the nuclear pores, ready for translation (protein synthesis). 
 
 Q: The cell's genetic material is stored in structures called what? 
     a. Cytoplasm 
     b. Nuclear pores
     c. mRNA
+    d. Chromosomes
+
     d. Chromosomes
 
 Q: All of the following are the functions of the nuclear envelope EXCEPT?
@@ -17,15 +19,19 @@ Q: All of the following are the functions of the nuclear envelope EXCEPT?
     c. Regulates the movement of molecules traveling out of the nucleus 
     d. Translate mRNA into proteins 
 
+    d. Translate mRNA into proteins
+
 Q: True or False? mRNA exits the nucleus through the nuclear pores.
+
+    True
 
 --------------------------------------------------------------------------------------------------------------------------------
 
 Endoplasmic Reticulum Info:
-The endoplasmic reticulum (ER) comprises networks of membranous tubules and sacs.
-Two regions: rough ER and smooth ER
-The rough ER is studded with ribosomes on its surface—plays an essential role in folding, transporting, and processing newly created proteins
-The smooth ER is primarily responsible for lipid synthesis, detoxification, and the storage of calcium ions
+The endoplasmic reticulum (ER) comprises networks of membranous tubules and sacs. 
+It has two regions: rough ER and smooth ER. 
+The rough ER is studded with ribosomes on its surface—plays an essential role in folding, transporting, and processing newly created proteins. 
+The smooth ER is primarily responsible for lipid synthesis, detoxification, and the storage of calcium ions. 
 
 Q: Which of the following is the function of ribosomes?
     a. Processing newly created proteins 
@@ -33,19 +39,27 @@ Q: Which of the following is the function of ribosomes?
     c. Detoxification 
     d. Storage of calcium ions 
 
+    a. Processing newly created proteins
+
 Q: True or False? The smooth ER is studded with ribosomes. 
 
+    False
+
 Q: True or False? One function of the smooth ER is the detoxification. 
+
+    True
 
 --------------------------------------------------------------------------------------------------------------------------------
 
 Mitochondria Info: 
-Referred to as the powerhouses of the cell
-A double-membraned organelle
-Primarily responsible for producing adenosine triphosphate (ATP), which is the cell's main source of energy
-Folding of the inner membrane increases the surface area, which allows for more ATP to be made
+The mitochondria is referred to as the powerhouses of the cell. 
+It is a double-membraned organelle. 
+It is primarily responsible for producing adenosine triphosphate (ATP), which is the cell's main source of energy. 
+The inner membrane of the mitochondria folds increases the surface area, which allows for more ATP to be made. 
 
 Q: True or False? The mitochondria is a single-membraned organelle. 
+
+    False
 
 Q: All of the following are true for the mitochondria EXCEPT?
     a. Produces ATP 
@@ -53,12 +67,14 @@ Q: All of the following are true for the mitochondria EXCEPT?
     c. Folding of inner membrane allows more more ATP to be made 
     d. Stores calcium ions 
 
+    d. Stores calcium ions
+
 --------------------------------------------------------------------------------------------------------------------------------
 
 Golgi Complex Info:
-The Golgi complex processes, modifies, and packages proteins and lipids synthesized by the cell
-Adds or removes chemical groups, sorts molecules, and packages them into vesicles for transport to various cell destinations
-Ensures that cellular molecules are properly modified and directed to their functional locations.
+The Golgi complex processes, modifies, and packages proteins and lipids synthesized by the cell. 
+It adds or removes chemical groups, sorts molecules, and packages them into vesicles for transport to various cell destinations. 
+It ensures that cellular molecules are properly modified and directed to their functional locations. 
 
 Q: All of the following are functions of the Golgi apparatus EXCEPT?
     a. Packages of proteins and lipids 
@@ -66,4 +82,8 @@ Q: All of the following are functions of the Golgi apparatus EXCEPT?
     c. Sort molecules and package them into vesicles 
     d. Synthesizes proteins and lipids 
 
+    d. Synthesizes proteins and lipids
+
 Q: True or False? The Golgi apparatus ensures that the cellular molecules are properly modified are transported to their function locations. 
+
+    True
