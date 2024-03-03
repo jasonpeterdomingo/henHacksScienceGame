@@ -36,8 +36,8 @@ def main():
     enemy_object = enemy_image.get_rect()
 
     # Entity initialization
-    player = Player([SCREEN_WIDTH / 2.5, SCREEN_HEIGHT / 1.6])
-    enemy = Enemy([40, player.position[1]])
+    player = Player([SCREEN_WIDTH / 2.5, SCREEN_HEIGHT / 1.3])
+    enemy = Enemy([40, player.position[1] -100])
 
     # Display Start Screen
     draw_start_screen(screen)
@@ -133,7 +133,7 @@ def draw_battle_screen(screen, player: Player, enemy: Enemy):
 
     # Draw the battle scene elements
     font = pygame.font.Font(None, 36)
-    text = font.render("Battle Screen", True, (255, 255, 255))
+    text = font.render("", True, (255, 255, 255))
     text_rect = text.get_rect(center=(screen.get_width() / 2, screen.get_height() / 2))
     screen.blit(text, text_rect)
 
