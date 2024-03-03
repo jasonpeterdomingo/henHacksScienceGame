@@ -12,21 +12,21 @@ def main():
     dt = 0
 
     # Load the background image
-    background_image = pygame.image.load("testing_bg.png")
+    background_image = pygame.image.load("cell_background.png")
     background_rect = background_image.get_rect()
 
     # Player starting values
     player_speed = 5
-    player_position = [SCREEN_WIDTH / 2.5, SCREEN_HEIGHT / 1.6]
+    player_position = [SCREEN_WIDTH / 2.5, SCREEN_HEIGHT / 1.3]
 
     # Load the character image
-    character_image = pygame.image.load("test_player.png")
+    character_image = pygame.image.load("player.png")
     character_rect = character_image.get_rect()
 
     # Load the object image
     object_image = pygame.image.load("nucleus.png")
     enemy_object = object_image.get_rect()
-    enemy_object.x = 40
+    enemy_object.x = 50
     enemy_object.y = player_position[1]
 
     # Display Start Screen
@@ -55,10 +55,10 @@ def main():
             # Clear the screen
             screen.blit(background_image, background_rect)
 
-            # Blit the character image onto the screen
+            # Using the Blit method to put the character image onto the screen
             screen.blit(character_image, player_position)
 
-            # Blit the object image onto the screen
+            # Using the Blit method to put the object image onto the screen
             screen.blit(object_image, enemy_object)
 
             # Left and Right Player Movement
@@ -69,7 +69,7 @@ def main():
                 player_position[0] += player_speed
 
             # Update the object's position
-            enemy_object.y = player_position[1]
+            enemy_object.y = player_position[1] - 100
 
             # Check for collision with object
             if enemy_object.colliderect(
@@ -120,7 +120,11 @@ def draw_start_screen(screen):
 
 
 def draw_battle_screen(screen):
-    screen.fill((0, 0, 0))  # Black background
+    # Load the battle background image
+    battle_background_image = pygame.image.load("testing_battle.png")
+    battle_background_rect = battle_background_image.get_rect()
+
+    screen.blit(battle_background_image, (0, 0))
 
     # Draw the battle scene elements
     font = pygame.font.Font(None, 36)
@@ -131,6 +135,7 @@ def draw_battle_screen(screen):
     # You can add additional elements here, such as UI components, health bars, etc.
 
     pygame.display.flip()
+
 
 
 if __name__ == '__main__':
