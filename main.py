@@ -1,6 +1,18 @@
 import pygame
 import sys
 
+# Player class
+class Player(object):
+    def __init__(self, position):
+        self.position = position
+        self.vel = 5
+        self.health = 3
+
+# Enemy class
+class Enemy(object):
+    def __init__(self, position):
+        self.position = position
+        self.health = 3
 
 def main():
     # pygame initializer
@@ -15,22 +27,18 @@ def main():
     background_image = pygame.image.load("Images/testing_bg.png")
     background_rect = background_image.get_rect()
 
-    # Player starting values
-    player_speed = 5
-    player_position = [SCREEN_WIDTH / 2.5, SCREEN_HEIGHT / 1.6]
-    player_health = 3
-
     # Load the character image
     character_image = pygame.image.load("Images/test_player.png")
     character_rect = character_image.get_rect()
 
     # Load the object image
-    object_image = pygame.image.load("Images/nucleus.png")
-    enemy_object = object_image.get_rect()
-    enemy_object.x = 40
-    enemy_object.y = player_position[1]
-    enemy_health = 3
+    enemy_image = pygame.image.load("Images/nucleus.png")
+    enemy_object = enemy_image.get_rect()
 
+    # Entity initialization
+    player = Player([SCREEN_WIDTH / 2.5, SCREEN_HEIGHT / 1.6])
+    enemy = Enemy([40, player.position[1]])
+    
     # Display Start Screen
     draw_start_screen(screen)
 
@@ -58,26 +66,26 @@ def main():
             screen.blit(background_image, background_rect)
 
             # Blit the character image onto the screen
-            screen.blit(character_image, player_position)
+            screen.blit(character_image, player.position)
 
             # Blit the object image onto the screen
-            screen.blit(object_image, enemy_object)
+            screen.blit(enemy_image, enemy.position)
 
             # Left and Right Player Movement
             keys = pygame.key.get_pressed()
             if keys[pygame.K_a]:
-                player_position[0] -= player_speed
+                player.position[0] -= player.vel
             if keys[pygame.K_d]:
-                player_position[0] += player_speed
+                player.position[0] += player.vel
 
             # Update the object's position
-            enemy_object.y = player_position[1]
+            enemy_object.y = player.position[1]
 
             # Check for collision with object
             if enemy_object.colliderect(
-                    pygame.Rect(player_position[0], player_position[1], character_rect.width, character_rect.height)):
+                    pygame.Rect(player.position[0], player.position[1], character_rect.width, character_rect.height)):
                 battle_screen_displayed = True
-                draw_battle_screen(screen, player_health, enemy_health)
+                draw_battle_screen(screen, player, enemy)
 
             # Update the display
             pygame.display.update()
@@ -92,7 +100,7 @@ def main():
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     battle_screen_displayed = False
 
-            draw_battle_screen(screen, player_health, enemy_health)
+            draw_battle_screen(screen, player, enemy)
             pygame.display.update()
 
     # Quits game
@@ -121,7 +129,7 @@ def draw_start_screen(screen):
     pygame.display.flip()
 
 
-def draw_battle_screen(screen, player_health, enemy_health):
+def draw_battle_screen(screen, player: Player, enemy: Enemy):
     screen.fill((0, 0, 0))  # Black background
 
     # Draw the battle scene elements
@@ -130,9 +138,9 @@ def draw_battle_screen(screen, player_health, enemy_health):
     text_rect = text.get_rect(center=(screen.get_width() / 2, screen.get_height() / 2))
     screen.blit(text, text_rect)
 
-    # You can add additional elements here, such as UI components, health bars, etc.
-    draw_player_hearts(screen, player_health)
-    draw_enemy_hearts(screen, enemy_health)
+    # Health
+    draw_player_hearts(screen, player.health)
+    draw_enemy_hearts(screen, enemy.health)
 
     pygame.display.flip()
 

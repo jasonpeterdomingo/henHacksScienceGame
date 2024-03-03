@@ -1,0 +1,3 @@
+The Golgi complex processes, modifies, and packages proteins and lipids synthesized by the cell. 
+It adds or removes chemical groups, sorts molecules, and packages them into vesicles for transport to various cell destinations. 
+It ensures that cellular molecules are properly modified and directed to their functional locations. 

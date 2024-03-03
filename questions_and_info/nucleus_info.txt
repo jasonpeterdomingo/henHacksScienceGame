@@ -1,0 +1,5 @@
+The nucleus stores the genetic material (DNA) of the cell into structures called chromosomes. 
+The nuclear envelope separates the nucleus from the cytoplasm and regulates the movement of molecules in and out of the nucleus. 
+Inside the nucleus, DNA is transcribed into a primary transcript. 
+Primary transcript undergoes RNA processing (converts the primary transcript into mRNA). 
+The mRNA then exits the nucleus via the nuclear pores, ready for translation (protein synthesis). 
