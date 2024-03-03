@@ -126,7 +126,7 @@ def draw_battle_screen(screen, player: Player, enemy: Enemy):
     screen.fill((0, 0, 0))  # Black background
     
     # Load the battle background image
-    battle_background_image = pygame.image.load("Images/testing_battle.png")
+    battle_background_image = pygame.image.load("Images/battle.png")
     battle_background_rect = battle_background_image.get_rect()
 
     screen.blit(battle_background_image, (0, 0))
