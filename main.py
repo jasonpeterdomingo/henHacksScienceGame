@@ -15,16 +15,14 @@ def main():
     background_image = pygame.image.load("Images/testing_bg.png")
     background_rect = background_image.get_rect()
 
-    # Player dataclass
+    # Player class
     class Player(object):
-        def __init__(self, position, vel):
+        def __init__(self, position):
             self.position = position
             self.vel = 5
             
-    # Player starting values
-    #player_speed = 5
-    player = Player([SCREEN_WIDTH / 2.5, SCREEN_HEIGHT / 1.6], 5)
-    #player_position = [SCREEN_WIDTH / 2.5, SCREEN_HEIGHT / 1.6]
+    # Player initialization
+    player = Player([SCREEN_WIDTH / 2.5, SCREEN_HEIGHT / 1.6])
 
     # Load the character image
     character_image = pygame.image.load("Images/test_player.png")
