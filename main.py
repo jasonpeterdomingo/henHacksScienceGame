@@ -24,11 +24,11 @@ def main():
     dt = 0
 
     # Load the background image
-    background_image = pygame.image.load("Images/testing_bg.png")
+    background_image = pygame.image.load("Images/cell_background.png")
     background_rect = background_image.get_rect()
-
+    
     # Load the character image
-    character_image = pygame.image.load("Images/test_player.png")
+    character_image = pygame.image.load("Images/player.png")
     character_rect = character_image.get_rect()
 
     # Load the enemy image
@@ -52,9 +52,9 @@ def main():
             elif event.type == pygame.MOUSEBUTTONDOWN and start_screen_displayed:
                 if event.button == 1:  # Left mouse button
                     x, y = event.pos
-                    if 540 <= x <= 740 and 320 <= y <= 380:  # Start button area
+                    if 240 <= x <= 850 and 400 <= y <= 500:  # Start button area
                         start_screen_displayed = False
-                    elif 540 <= x <= 740 and 420 <= y <= 480:  # Exit button area
+                    elif 1150 <= x <= 1320 and 20 <= y <= 80:                        # Exit button area
                         pygame.quit()
                         sys.exit()
             elif event.type == pygame.MOUSEBUTTONDOWN and battle_screen_displayed:
@@ -79,7 +79,8 @@ def main():
                 player.position[0] += player.vel
 
             # Update the object's position
-            enemy_object.y = player.position[1]
+            enemy_object.y = player.position[1] - 100
+
 
             # Check for collision with object
             if enemy_object.colliderect(
@@ -108,29 +109,27 @@ def main():
 
 
 def draw_start_screen(screen):
-    screen.fill((0, 0, 0))  # Black background
+    main_background_image = pygame.image.load("Images/home_screen.png")
+    main_background_rect = main_background_image.get_rect()
+    screen.blit(main_background_image, (0, 0))
     font = pygame.font.Font(None, 36)
-    text = font.render("Click to start", True, (255, 255, 255))
+    text = font.render("", True, (255, 255, 255))
     text_rect = text.get_rect(center=(screen.get_width() / 2, screen.get_height() / 2 - 100))
     screen.blit(text, text_rect)
 
-    # Start Button
-    pygame.draw.rect(screen, (255, 255, 255), (540, 320, 200, 60), 2)  # Draw clickable area
-    text_start = font.render("Start", True, (255, 255, 255))
-    text_start_rect = text_start.get_rect(center=(screen.get_width() / 2, screen.get_height() / 2))
-    screen.blit(text_start, text_start_rect)
 
-    # Exit Button
-    pygame.draw.rect(screen, (255, 255, 255), (540, 420, 200, 60), 2)  # Draw clickable area
-    text_exit = font.render("Exit", True, (255, 255, 255))
-    text_exit_rect = text_exit.get_rect(center=(screen.get_width() / 2, screen.get_height() / 2 + 100))
-    screen.blit(text_exit, text_exit_rect)
 
     pygame.display.flip()
 
 
 def draw_battle_screen(screen, player: Player, enemy: Enemy):
     screen.fill((0, 0, 0))  # Black background
+    
+    # Load the battle background image
+    battle_background_image = pygame.image.load("Images/testing_battle.png")
+    battle_background_rect = battle_background_image.get_rect()
+
+    screen.blit(battle_background_image, (0, 0))
 
     # Draw the battle scene elements
     font = pygame.font.Font(None, 36)
@@ -157,7 +156,6 @@ def draw_enemy_hearts(screen, health):
     for i in range(health):
         pygame.draw.rect(screen, (255, 0, 0), (enemy_heart_position, 10, 50, 50), 2)
         enemy_heart_position += 60
-
 
 if __name__ == '__main__':
     main()
