@@ -25,9 +25,9 @@ def main():
 
     # Load the object image
     object_image = pygame.image.load("nucleus.png")
-    object_rect = object_image.get_rect()
-    object_rect.x = 40
-    object_rect.y = player_position[1]
+    enemy_object = object_image.get_rect()
+    enemy_object.x = 40
+    enemy_object.y = player_position[1]
 
     # Display Start Screen
     draw_start_screen(screen)
@@ -59,7 +59,7 @@ def main():
             screen.blit(character_image, player_position)
 
             # Blit the object image onto the screen
-            screen.blit(object_image, object_rect)
+            screen.blit(object_image, enemy_object)
 
             # Left and Right Player Movement
             keys = pygame.key.get_pressed()
@@ -69,10 +69,10 @@ def main():
                 player_position[0] += player_speed
 
             # Update the object's position
-            object_rect.y = player_position[1]
+            enemy_object.y = player_position[1]
 
             # Check for collision with object
-            if object_rect.colliderect(
+            if enemy_object.colliderect(
                     pygame.Rect(player_position[0], player_position[1], character_rect.width, character_rect.height)):
                 battle_screen_displayed = True
                 draw_battle_screen(screen)
