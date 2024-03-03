@@ -15,9 +15,16 @@ def main():
     background_image = pygame.image.load("Images/testing_bg.png")
     background_rect = background_image.get_rect()
 
+    # Player dataclass
+    class Player(object):
+        def __init__(self, position, vel):
+            self.position = position
+            self.vel = 5
+            
     # Player starting values
-    player_speed = 5
-    player_position = [SCREEN_WIDTH / 2.5, SCREEN_HEIGHT / 1.6]
+    #player_speed = 5
+    player = Player([SCREEN_WIDTH / 2.5, SCREEN_HEIGHT / 1.6], 5)
+    #player_position = [SCREEN_WIDTH / 2.5, SCREEN_HEIGHT / 1.6]
 
     # Load the character image
     character_image = pygame.image.load("Images/test_player.png")
@@ -27,7 +34,7 @@ def main():
     object_image = pygame.image.load("Images/nucleus.png")
     enemy_object = object_image.get_rect()
     enemy_object.x = 40
-    enemy_object.y = player_position[1]
+    enemy_object.y = player.position[1]
 
     # Display Start Screen
     draw_start_screen(screen)
@@ -56,7 +63,7 @@ def main():
             screen.blit(background_image, background_rect)
 
             # Blit the character image onto the screen
-            screen.blit(character_image, player_position)
+            screen.blit(character_image, player.position)
 
             # Blit the object image onto the screen
             screen.blit(object_image, enemy_object)
@@ -64,16 +71,16 @@ def main():
             # Left and Right Player Movement
             keys = pygame.key.get_pressed()
             if keys[pygame.K_a]:
-                player_position[0] -= player_speed
+                player.position[0] -= player.vel
             if keys[pygame.K_d]:
-                player_position[0] += player_speed
+                player.position[0] += player.vel
 
             # Update the object's position
-            enemy_object.y = player_position[1]
+            enemy_object.y = player.position[1]
 
             # Check for collision with object
             if enemy_object.colliderect(
-                    pygame.Rect(player_position[0], player_position[1], character_rect.width, character_rect.height)):
+                    pygame.Rect(player.position[0], player.position[1], character_rect.width, character_rect.height)):
                 battle_screen_displayed = True
                 draw_battle_screen(screen)
 
