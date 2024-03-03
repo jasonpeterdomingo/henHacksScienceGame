@@ -1,5 +1,5 @@
-# henHacksScienceGame
-Science Game for HenHacks2024
+# Cellular Adventure
+Biology Game for HenHacks2024
 
 ## Group Members
 Tristan Dendorfer: tdendorf@udel.edu <br>
