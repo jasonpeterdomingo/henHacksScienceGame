@@ -1,6 +1,18 @@
 import pygame
 import sys
 
+# Player class
+class Player(object):
+    def __init__(self, position):
+        self.position = position
+        self.vel = 5
+        self.health = 3
+
+# Enemy class
+class Enemy(object):
+    def __init__(self, position):
+        self.position = position
+        self.health = 3
 
 def main():
     # pygame initializer
@@ -14,20 +26,18 @@ def main():
     # Load the background image
     background_image = pygame.image.load("Images/cell_background.png")
     background_rect = background_image.get_rect()
-
-    # Player starting values
-    player_speed = 5
-    player_position = [SCREEN_WIDTH / 2.5, SCREEN_HEIGHT / 1.3]
-
+    
     # Load the character image
     character_image = pygame.image.load("Images/player.png")
     character_rect = character_image.get_rect()
 
-    # Load the object image
-    object_image = pygame.image.load("Images/nucleus.png")
-    enemy_object = object_image.get_rect()
-    enemy_object.x = 50
-    enemy_object.y = player_position[1]
+    # Load the enemy image
+    enemy_image = pygame.image.load("Images/nucleus.png")
+    enemy_object = enemy_image.get_rect()
+
+    # Entity initialization
+    player = Player([SCREEN_WIDTH / 2.5, SCREEN_HEIGHT / 1.3])
+    enemy = Enemy([40, player.position[1] -100])
 
     # Display Start Screen
     draw_start_screen(screen)
@@ -55,27 +65,28 @@ def main():
             # Clear the screen
             screen.blit(background_image, background_rect)
 
-            # Using the Blit method to put the character image onto the screen
-            screen.blit(character_image, player_position)
+            # Blit the character image onto the screen
+            screen.blit(character_image, player.position)
 
-            # Using the Blit method to put the object image onto the screen
-            screen.blit(object_image, enemy_object)
+            # Blit the object image onto the screen
+            screen.blit(enemy_image, enemy.position)
 
             # Left and Right Player Movement
             keys = pygame.key.get_pressed()
             if keys[pygame.K_a]:
-                player_position[0] -= player_speed
+                player.position[0] -= player.vel
             if keys[pygame.K_d]:
-                player_position[0] += player_speed
+                player.position[0] += player.vel
 
             # Update the object's position
-            enemy_object.y = player_position[1] - 100
+            enemy_object.y = player.position[1] - 100
+
 
             # Check for collision with object
             if enemy_object.colliderect(
-                    pygame.Rect(player_position[0], player_position[1], character_rect.width, character_rect.height)):
+                    pygame.Rect(player.position[0], player.position[1], character_rect.width, character_rect.height)):
                 battle_screen_displayed = True
-                draw_battle_screen(screen)
+                draw_battle_screen(screen, player, enemy)
 
             # Update the display
             pygame.display.update()
@@ -87,10 +98,10 @@ def main():
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
-                elif event.type == pygame.MOUSEBUTTONDOWN:
+                if event.type == pygame.MOUSEBUTTONDOWN:
                     battle_screen_displayed = False
 
-            draw_battle_screen(screen)
+            draw_battle_screen(screen, player, enemy)
             pygame.display.update()
 
     # Quits game
@@ -111,24 +122,40 @@ def draw_start_screen(screen):
     pygame.display.flip()
 
 
-def draw_battle_screen(screen):
+def draw_battle_screen(screen, player: Player, enemy: Enemy):
+    screen.fill((0, 0, 0))  # Black background
+    
     # Load the battle background image
-    battle_background_image = pygame.image.load("Images/testing_battle.png")
+    battle_background_image = pygame.image.load("Images/battle.png")
     battle_background_rect = battle_background_image.get_rect()
 
     screen.blit(battle_background_image, (0, 0))
 
     # Draw the battle scene elements
     font = pygame.font.Font(None, 36)
-    text = font.render("Battle Screen", True, (255, 255, 255))
+    text = font.render("", True, (255, 255, 255))
     text_rect = text.get_rect(center=(screen.get_width() / 2, screen.get_height() / 2))
     screen.blit(text, text_rect)
 
-    # You can add additional elements here, such as UI components, health bars, etc.
+    # Health
+    draw_player_hearts(screen, player.health)
+    draw_enemy_hearts(screen, enemy.health)
 
     pygame.display.flip()
 
 
+def draw_player_hearts(screen, health):
+    player_heart_position = 10
+    for i in range(health):
+        pygame.draw.rect(screen, (255, 0, 0), (player_heart_position, 10, 50, 50), 2)
+        player_heart_position += 60
+
+
+def draw_enemy_hearts(screen, health):
+    enemy_heart_position = screen.get_width() - 180
+    for i in range(health):
+        pygame.draw.rect(screen, (255, 0, 0), (enemy_heart_position, 10, 50, 50), 2)
+        enemy_heart_position += 60
 
 if __name__ == '__main__':
     main()
